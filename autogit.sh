@@ -1,4 +1,4 @@
 git add -A
-git commit -m "admin.py -> alts added | urls.py -> created & alts added | next step: views.py"
+git commit -m "views.py -> alts added | next step: templates"
 git push
 git status
