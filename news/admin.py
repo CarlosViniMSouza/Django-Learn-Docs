@@ -15,4 +15,6 @@ admin.site.register(models.Article)
 """
 Um fluxo de trabalho típico na criação de aplicativos Django é criar modelos e colocar os sites de administração em funcionamento o mais rápido possível,
 para que sua equipe (ou clientes) possa começar a preencher os dados. Em seguida, desenvolva a forma como os dados são apresentados ao público.
+
+-> Dirija-se ao arquivo urls.py
 """
