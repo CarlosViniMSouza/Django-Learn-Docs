@@ -11,6 +11,7 @@ from django.shortcuts import render
 
 from .models import Article
 
+
 def year_archive(request, year):
     a_list = Article.objects.filter(pub_date_year=year)
     context = {'year': year, 'article_list': a_list}
@@ -18,4 +19,6 @@ def year_archive(request, year):
 
 """
 Este exemplo usa o sistema de templates do Django, que possui vários recursos poderosos, mas se esforça para permanecer simples o suficiente para 'não-programadores' usarem.
+
+Dirija-se ao arquivo templates/news/year_archive.html
 """

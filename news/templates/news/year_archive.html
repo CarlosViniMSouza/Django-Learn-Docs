@@ -1,0 +1,54 @@
+<!--
+O código em views.py carrega o template news/year_archive.html.
+
+O Django tem um caminho de busca de templates, que permite minimizar a redundância entre templates. Nas configurações do Django, você especifica
+uma lista de diretórios para verificar os modelos com DIRS. Se um modelo não existir no primeiro diretório, ele verifica o segundo e assim por diante.
+
+Digamos que o modelo news/year_archive.html foi encontrado. Veja como isso pode parecer:
+--->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Year Archive - Articles Project</title>
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block title %} Articles for {{ year }} {% endblock %}
+
+    {% block content %}
+        <h1>Articles for {{ year }}</h1>
+
+        {% for article in article_list %}
+            <p>{{ article.title }}</p>
+            <p>By {{ article.reporter.name_completed }}</p>
+            <p>Published in {{ article.date | date: "F j, Y" }}</p>
+        {% endfor %}
+    {% endblock %}
+</body>
+</html>
+
+<!--
+As variáveis são cercadas por chaves duplas. {{ article.title }} significa "Saiba o valor do atributo de título do artigo".
+Mas os pontos não são usados apenas para pesquisa de atributos. Eles também podem fazer pesquisa de chave de dicionário, pesquisa de índice e chamadas de função
+--->
+
+<!--
+Obs.: {{ article.pub_date | date:"F j, Y" }} usa um "pipe" no estilo Unix (o caractere "|"). Chamamos de 'filtro de modelo' é uma forma de filtrar o valor da variável.
+Nesse caso, o filtro de data formata um objeto de data e hora do Python no formato fornecido.
+--->
+
+<!--
+Você pode encadear quantos filtros quiser. Você pode escrever filtros de modelo personalizados. Você pode escrever tags de modelo personalizadas,
+que executam código Python personalizado nos bastidores.
+--->
+
+<!--
+Finalmente, o Django usa o conceito de "herança de template". É isso que o {% extends "base.html" %} faz. Significa "Primeiro carregue o modelo chamado 'base',
+que definiu vários blocos, e preencha os blocos com os seguintes blocos". Resumidamente, que permite reduzir drasticamente a redundância em modelos:
+Cada modelo deve definir apenas o que é exclusivo desse modelo.
+--->
+
+<!-- Veja como pode ser o modelo "base.html", incluindo o uso de arquivos estáticos -->
